@@ -66,7 +66,15 @@ A 'seat' entity holds data about the available seats and their pricing in the st
 | row | VARCHAR(5) | Row of the seat | NN | |
 | price | INT | Price of the seat in THB | NN | |
 
+## 3. seat_type
 
+A 'seat_type' entity holds data about the available types of seats and their pricing in the stadium.
+
+| Attribute | Data Type | Description | Keys & Constraints | Note |
+| :--- | :--- | :--- | :--- | :--- |
+| **type_no** | **VARCHAR(10)** | **Type number (1 , 2)** | **PK** | |
+| type_name | VARCHAR(50) | Name Type of seat (REGULAR, VIP) | NN | |
+| price | INT | Price of the seat in THB | NN | |
 
 ## 3. match
 
