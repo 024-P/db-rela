@@ -172,5 +172,5 @@ A 'product_order' entity holds data about the specific products added to a cart.
 | :--- | :--- | :--- | :--- | :--- |
 | **product_no** | **SERIAL** | **Order Item ID** | **PK** | |
 | cart_no | INT | ID of the cart this order belongs to | NN, REFERENCES: `cart(cart_no)` | FK |
-| prodID | INT | ID of the product ordered | NN, REFERENCES: `product(prodID)` | |
+| prodID | INT | ID of the product ordered | NN, REFERENCES: `product(prodID)` | FK |
 | quantity | INT | Quantity of the product ordered | NN, CHECK: `quantity > 0` | |
