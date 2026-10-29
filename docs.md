@@ -84,7 +84,6 @@ A 'match' entity holds data about the scheduled football matches.
 | Attribute | Data Type | Description | Keys & Constraints | Note |
 | :--- | :--- | :--- | :--- | :--- |
 | **match_no** | **SERIAL** | **Match ID** | **PK** | |
-| match_detail_id | INT | Match Detail ID | NN,REFERENCES: `match_detail(match_detail_id)` | FK |
 | match_name | VARCHAR(50) | Match name | NN | |
 
 
@@ -120,8 +119,8 @@ A 'ticket' entity holds data about the tickets booked by users.
 | Attribute | Data Type | Description | Keys & Constraints | Note |
 | :--- | :--- | :--- | :--- | :--- |
 | **ticket_id** | **SERIAL** | **Ticket ID** | **PK** | |
-| cart_No| INT | ID of the cart | NN, REFERENCES: `cart(cart_no)` | FK |
-| seat_No | VARCHAR(10) | ID of the booked seat | NN, REFERENCES: `seat(seat_no)` | FK |
+| cart_no | INT | ID of the cart | NN, REFERENCES: `cart(cart_no)` | FK |
+| seat_no | VARCHAR(10) | ID of the booked seat | NN, REFERENCES: `seat(seat_no)` | FK |
 | match_no | INT | ID of the match | NN, REFERENCES: `match(match_no)` | FK |
 | expire_date | TIMESTAMP(0) | Expiration time of the ticket | NN | |
 | start_date | TIMESTAMP(0) | Valid from time | NN | |
@@ -147,8 +146,8 @@ A 'cart' entity holds data about the user's booking/shopping session.
 | Attribute | Data Type | Description | Keys & Constraints | Note |
 | :--- | :--- | :--- | :--- | :--- |
 | **cart_no** | **SERIAL** | **Cart ID** | **PK** | |
-| userID | INT | ID of the user owning the cart | NN, REFERENCES: `user(user_id)` | |
-| discountID | INT | ID of the applied discount | REFERENCES: `discount(discountid)` | |
+| userID | INT | ID of the user owning the cart | NN, REFERENCES: `user(user_id)` | FK |
+| discountID | INT | ID of the applied discount | REFERENCES: `discount(discountid)` | FK |
 | paid | BOOLEAN | Payment status of the cart | NN, DEFAULT: `FALSE` | |
 | paidDate | TIMESTAMP(0) | Payment date of the cart | NN | |
 | createdDate | TIMESTAMP(0) | Created cart date | NN | |
@@ -172,6 +171,6 @@ A 'product_order' entity holds data about the specific products added to a cart.
 | Attribute | Data Type | Description | Keys & Constraints | Note |
 | :--- | :--- | :--- | :--- | :--- |
 | **product_no** | **SERIAL** | **Order Item ID** | **PK** | |
-| cart_no | INT | ID of the cart this order belongs to | NN, REFERENCES: `cart(cart_no)` | |
+| cart_no | INT | ID of the cart this order belongs to | NN, REFERENCES: `cart(cart_no)` | FK |
 | prodID | INT | ID of the product ordered | NN, REFERENCES: `product(prodID)` | |
 | quantity | INT | Quantity of the product ordered | NN, CHECK: `quantity > 0` | |
