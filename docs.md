@@ -89,7 +89,7 @@ A 'match' entity holds data about the scheduled football matches.
 
 ## 5. match_detail
 
-A 'match' entity holds data about the scheduled football matches.
+A 'match_detail' entity holds data about the detail football matches.
 
 | Attribute | Data Type | Description | Keys & Constraints | Note |
 | :--- | :--- | :--- | :--- | :--- |
