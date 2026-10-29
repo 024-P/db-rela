@@ -146,6 +146,7 @@ A 'cart' entity holds data about the user's booking/shopping session.
 | paid | BOOLEAN | Payment status of the cart | NN, DEFAULT: `FALSE` | |
 | paidDate | BOOLEAN | Payment date of the cart | NN | |
 | createdDate | BOOLEAN | Created cart date | NN | |
+| totalprice | INT | Total price | NN | |
 
 ## 10. product
 
