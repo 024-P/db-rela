@@ -144,7 +144,8 @@ A 'cart' entity holds data about the user's booking/shopping session.
 | userID | INT | ID of the user owning the cart | NN, REFERENCES: `user(user_id)` | |
 | discountID | INT | ID of the applied discount | REFERENCES: `discount(discountid)` | |
 | paid | BOOLEAN | Payment status of the cart | NN, DEFAULT: `FALSE` | |
-
+| paidDate | BOOLEAN | Payment date of the cart | NN | |
+| createdDate | BOOLEAN | Created cart date | NN | |
 
 ## 10. product
 
