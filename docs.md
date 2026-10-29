@@ -48,7 +48,7 @@ An 'user' entity holds data about the users in the system including visitors, st
 | birthDate | DATE | User's date of birth | | |
 | email | VARCHAR(255) | User's email | NN, UNIQUE | |
 | phone | VARCHAR(20) | Phone number | NN | |
-| password | VARCHAR(10) | User's Password | NN | |
+| password | VARCHAR(255) | User's Password | NN | |
 | province | VARCHAR(100) | User's province | | |
 | city | VARCHAR(100) | User's city or district | | |
 | postalcode | VARCHAR(10) | User's postal code | | |
@@ -63,7 +63,7 @@ A 'seat' entity holds data about the available seats and their pricing in the st
 | Attribute | Data Type | Description | Keys & Constraints | Note |
 | :--- | :--- | :--- | :--- | :--- |
 | **seat_no** | **VARCHAR(10)** | **Seat number (e.g., A01, C15)** | **PK** | |
-| type_no | INT | Type number (0 , 1) | NN | |
+| type_no | INT | Type number (0 , 1) | NN, REFERENCES: `seat_type(type_no)` | FK |
 | zone | VARCHAR(10) | Zone of the seat (A, B, C, D) | NN | |
 | row | VARCHAR(5) | Row of the seat | NN | |
 
@@ -84,7 +84,7 @@ A 'match' entity holds data about the scheduled football matches.
 | Attribute | Data Type | Description | Keys & Constraints | Note |
 | :--- | :--- | :--- | :--- | :--- |
 | **match_no** | **SERIAL** | **Match ID** | **PK** | |
-| match_detail_id | INT | Match Detail ID | NN | |
+| match_detail_id | INT | Match Detail ID | NN,REFERENCES: `match_detail(match_detail_id)` | FK |
 | match_name | VARCHAR(50) | Match name | NN | |
 
 
@@ -95,7 +95,9 @@ A 'match_detail' entity holds data about the detail football matches.
 | Attribute | Data Type | Description | Keys & Constraints | Note |
 | :--- | :--- | :--- | :--- | :--- |
 | **match_detail_id** | **SERIAL** | **Match Detail ID** | **PK** | |
-| team_id | INT | Team ID | NN | |
+| match_no | INT | ID of the match | NN, REFERENCES: `match(match_no)` | FK |
+| home_team_id | INT | Team ID | NN, REFERENCES: `team(team_id)` | FK |
+| away_team_id | INT | Team ID | NN, REFERENCES: `team(team_id)` | FK |
 | matchDate | TIMESTAMP(0) | date of the match | NN | |
 | matchStart | TIMESTAMP(0) | Start date and time of the match | NN | |
 | matchEnd | TIMESTAMP(0) | End date and time of the match | NN | |
@@ -118,8 +120,9 @@ A 'ticket' entity holds data about the tickets booked by users.
 | Attribute | Data Type | Description | Keys & Constraints | Note |
 | :--- | :--- | :--- | :--- | :--- |
 | **ticket_id** | **SERIAL** | **Ticket ID** | **PK** | |
-| cart_No| INT | ID of the cart | NN, REFERENCES: `cart(cart_no)` | |
-| seat_No | VARCHAR(10) | ID of the booked seat | NN, REFERENCES: `seat(seat_no)` | |
+| cart_No| INT | ID of the cart | NN, REFERENCES: `cart(cart_no)` | FK |
+| seat_No | VARCHAR(10) | ID of the booked seat | NN, REFERENCES: `seat(seat_no)` | FK |
+| match_no | INT | ID of the match | NN, REFERENCES: `match(match_no)` | FK |
 | expire_date | TIMESTAMP(0) | Expiration time of the ticket | NN | |
 | start_date | TIMESTAMP(0) | Valid from time | NN | |
 | status | VARCHAR(50) | Ticket status (Active, Used, Cancelled) | NN, DEFAULT: `'Active'` | |
