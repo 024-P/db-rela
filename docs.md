@@ -47,6 +47,7 @@ An 'user' entity holds data about the users in the system including visitors, st
 | last_name | VARCHAR(255) | User's lastname | NN | |
 | birthDate | DATE | User's date of birth | | |
 | email | VARCHAR(255) | User's email | NN, UNIQUE | |
+| phone | INT | Phone number | NN | |
 | province | VARCHAR(100) | User's province | | |
 | city | VARCHAR(100) | User's city or district | | |
 | postalcode | VARCHAR(10) | User's postal code | | |
