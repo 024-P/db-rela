@@ -76,7 +76,7 @@ A 'seat_type' entity holds data about the available types of seats and their pri
 | type_name | VARCHAR(50) | Name Type of seat (REGULAR, VIP) | NN | |
 | price | INT | Price of the seat in THB | NN | |
 
-## 3. match
+## 4. match
 
 A 'match' entity holds data about the scheduled football matches.
 
@@ -86,7 +86,7 @@ A 'match' entity holds data about the scheduled football matches.
 | match_name | VARCHAR(50) | User's role (Visitor, Staff, Admin) | NN | |
 
 
-## 4. match_detail
+## 5. match_detail
 
 A 'match' entity holds data about the scheduled football matches.
 
@@ -99,7 +99,7 @@ A 'match' entity holds data about the scheduled football matches.
 | matchIMG | VARCHAR(50) | URL or path to the match banner image | | |
 
 
-## 5. team
+## 6. team
 
 a 'team' entity holds data about the team.
 
@@ -108,7 +108,7 @@ a 'team' entity holds data about the team.
 | **team_id** | **SERIAL** | **Team ID** | **PK** | |
 | team_name | VARCHAR(100) | team name | NN | |
 
-## 6. ticket
+## 7. ticket
 
 A 'ticket' entity holds data about the tickets booked by users.
 
@@ -123,7 +123,7 @@ A 'ticket' entity holds data about the tickets booked by users.
 
 
 
-## 7.  discount
+## 8.  discount
 
 A 'discount' entity holds data about discount codes.
 
@@ -134,7 +134,7 @@ A 'discount' entity holds data about discount codes.
 | used | BOOLEAN | Indicates if the discount has been used | NN, DEFAULT: `FALSE` | |
 
 
-## 8. cart
+## 9. cart
 
 A 'cart' entity holds data about the user's booking/shopping session.
 
@@ -146,7 +146,7 @@ A 'cart' entity holds data about the user's booking/shopping session.
 | paid | BOOLEAN | Payment status of the cart | NN, DEFAULT: `FALSE` | |
 
 
-## 9. product
+## 10. product
 
 A 'product' entity holds data about souvenir items available for purchase.
 
@@ -157,7 +157,7 @@ A 'product' entity holds data about souvenir items available for purchase.
 | price | INT | Price of the product in THB | NN | |
 
 
-## 10. product_order
+## 11. product_order
 
 A 'product_order' entity holds data about the specific products added to a cart.
 
