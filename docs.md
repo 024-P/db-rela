@@ -47,7 +47,7 @@ An 'user' entity holds data about the users in the system including visitors, st
 | last_name | VARCHAR(255) | User's lastname | NN | |
 | birthDate | DATE | User's date of birth | | |
 | email | VARCHAR(255) | User's email | NN, UNIQUE | |
-| phone | INT | Phone number | NN | |
+| phone | VARCHAR(20) | Phone number | NN | |
 | province | VARCHAR(100) | User's province | | |
 | city | VARCHAR(100) | User's city or district | | |
 | postalcode | VARCHAR(10) | User's postal code | | |
@@ -62,7 +62,7 @@ A 'seat' entity holds data about the available seats and their pricing in the st
 | Attribute | Data Type | Description | Keys & Constraints | Note |
 | :--- | :--- | :--- | :--- | :--- |
 | **seat_no** | **VARCHAR(10)** | **Seat number (e.g., A01, C15)** | **PK** | |
-| seat_type | VARCHAR(50) | Type of seat (REGULAR, VIP) | NN | |
+| type_no | INT | Type number (0 , 1) | NN | |
 | zone | VARCHAR(10) | Zone of the seat (A, B, C, D) | NN | |
 | row | VARCHAR(5) | Row of the seat | NN | |
 
@@ -72,7 +72,7 @@ A 'seat_type' entity holds data about the available types of seats and their pri
 
 | Attribute | Data Type | Description | Keys & Constraints | Note |
 | :--- | :--- | :--- | :--- | :--- |
-| **type_no** | **VARCHAR(10)** | **Type number (0 , 1)** | **PK** | |
+| **type_no** | **INT** | **Type number (0 , 1)** | **PK** | |
 | type_name | VARCHAR(50) | Name Type of seat (REGULAR, VIP) | NN | |
 | price | INT | Price of the seat in THB | NN | |
 
@@ -83,7 +83,8 @@ A 'match' entity holds data about the scheduled football matches.
 | Attribute | Data Type | Description | Keys & Constraints | Note |
 | :--- | :--- | :--- | :--- | :--- |
 | **match_no** | **SERIAL** | **Match ID** | **PK** | |
-| match_name | VARCHAR(50) | User's role (Visitor, Staff, Admin) | NN | |
+| match_detail_id | INT | Match Detail ID | NN | |
+| match_name | VARCHAR(50) | Match name | NN | |
 
 
 ## 5. match_detail
@@ -93,6 +94,7 @@ A 'match_detail' entity holds data about the detail football matches.
 | Attribute | Data Type | Description | Keys & Constraints | Note |
 | :--- | :--- | :--- | :--- | :--- |
 | **match_detail_id** | **SERIAL** | **Match Detail ID** | **PK** | |
+| team_id | INT | Team ID | NN | |
 | matchDate | TIMESTAMP(0) | date of the match | NN | |
 | matchStart | TIMESTAMP(0) | Start date and time of the match | NN | |
 | matchEnd | TIMESTAMP(0) | End date and time of the match | NN | |
@@ -115,8 +117,8 @@ A 'ticket' entity holds data about the tickets booked by users.
 | Attribute | Data Type | Description | Keys & Constraints | Note |
 | :--- | :--- | :--- | :--- | :--- |
 | **ticket_id** | **SERIAL** | **Ticket ID** | **PK** | |
-| user_id | INT | ID of the user who booked | NN, REFERENCES: `user(user_id)` | |
-| seat_id | VARCHAR(10) | ID of the booked seat | NN, REFERENCES: `seat(seat_no)` | |
+| cart_No| INT | ID of the cart | NN, REFERENCES: `cart(cart_no)` | |
+| seat_No | VARCHAR(10) | ID of the booked seat | NN, REFERENCES: `seat(seat_no)` | |
 | expire_date | TIMESTAMP(0) | Expiration time of the ticket | NN | |
 | start_date | TIMESTAMP(0) | Valid from time | NN | |
 | status | VARCHAR(50) | Ticket status (Active, Used, Cancelled) | NN, DEFAULT: `'Active'` | |
@@ -144,8 +146,8 @@ A 'cart' entity holds data about the user's booking/shopping session.
 | userID | INT | ID of the user owning the cart | NN, REFERENCES: `user(user_id)` | |
 | discountID | INT | ID of the applied discount | REFERENCES: `discount(discountid)` | |
 | paid | BOOLEAN | Payment status of the cart | NN, DEFAULT: `FALSE` | |
-| paidDate | BOOLEAN | Payment date of the cart | NN | |
-| createdDate | BOOLEAN | Created cart date | NN | |
+| paidDate | TIMESTAMP(0) | Payment date of the cart | NN | |
+| createdDate | TIMESTAMP(0) | Created cart date | NN | |
 | totalprice | INT | Total price | NN | |
 
 ## 10. product
